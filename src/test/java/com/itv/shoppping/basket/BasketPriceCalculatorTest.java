@@ -56,7 +56,7 @@ public class BasketPriceCalculatorTest {
 		List<String> basketOfApples = Arrays.asList(ItemEnum.ITEM_A.name(), ItemEnum.ITEM_A.name(),
 				ItemEnum.ITEM_A.name());
 		BasketPriceCalculator calc = new BasketPriceCalculator(basketOfApples);
-		assertThat(BlockingObservable.from(calc.totalPromotionalPrice()).last(), is(100));
+		assertThat(BlockingObservable.from(calc.totalPromotionalPrice()).last(), is(130));
 	}
 
 	@Test
@@ -64,6 +64,16 @@ public class BasketPriceCalculatorTest {
 		List<String> basketOfOranges = Arrays.asList(ItemEnum.ITEM_B.name(), ItemEnum.ITEM_B.name(),
 				ItemEnum.ITEM_B.name());
 		BasketPriceCalculator calc = new BasketPriceCalculator(basketOfOranges);
-		assertThat(BlockingObservable.from(calc.totalPromotionalPrice()).last(), is(0.50));
+		assertThat(BlockingObservable.from(calc.totalPromotionalPrice()).last(), is(90));
+	}
+	
+	@Test
+	public void testPromotionalPriceOfBasketFullOfItems() {
+		List<String> basketOfOranges = Arrays.asList(ItemEnum.ITEM_B.name(), ItemEnum.ITEM_B.name(),
+				ItemEnum.ITEM_B.name(), ItemEnum.ITEM_A.name(), ItemEnum.ITEM_A.name(),
+				ItemEnum.ITEM_A.name(), ItemEnum.ITEM_C.name(), ItemEnum.ITEM_D.name(),
+				ItemEnum.ITEM_D.name());
+		BasketPriceCalculator calc = new BasketPriceCalculator(basketOfOranges);
+		assertThat(BlockingObservable.from(calc.totalPromotionalPrice()).last(), is(270));
 	}
 }

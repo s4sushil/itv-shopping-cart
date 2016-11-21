@@ -48,15 +48,23 @@ public class BasketPriceCalculator {
 		return basketObservable.filter(ItemEnum.ITEM_D.name()::equals).map((eachOffer) -> ItemEnum.ITEM_D.getPrice());
 	}
 
-	private Observable<Integer> getPromotionalItemAPrice() {
-		return basketObservable.filter(ItemEnum.ITEM_A.name()::equals).buffer(2)
-				.map((eachOffer) -> ItemEnum.ITEM_A.getPrice());
+	/**
+	 * 2 for one offer
+	 * @return price
+	 */
+	private Observable<Integer> getPromotionalItemBPrice() {
+		return basketObservable.filter(ItemEnum.ITEM_B.name()::equals).buffer(2)
+				.map((eachOffer) -> ItemEnum.ITEM_B.getPrice() + 15);
 	}
 
-	private Observable<Integer> getPromotionalItemBPrice() {
-		return basketObservable.filter(ItemEnum.ITEM_B.name()::equals).buffer(3)
-				.map((eachOffer) -> eachOffer.size() == 3 ? ItemEnum.ITEM_B.getPrice() * 2
-						: ItemEnum.ITEM_B.getPrice() * eachOffer.size());
+	/**
+	 * 3 for one offer
+	 * @return price
+	 */
+	private Observable<Integer> getPromotionalItemAPrice() {
+		return basketObservable.filter(ItemEnum.ITEM_A.name()::equals).buffer(3)
+				.map((eachOffer) -> eachOffer.size() == 3 ? ItemEnum.ITEM_A.getPrice() * 2 + 30
+						: ItemEnum.ITEM_A.getPrice() * eachOffer.size());
 	}
 
 }
