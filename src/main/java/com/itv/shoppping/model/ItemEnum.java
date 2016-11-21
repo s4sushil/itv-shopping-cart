@@ -8,8 +8,10 @@ package com.itv.shoppping.model;
  */
 public enum ItemEnum {
 
-    APPLE("Apple", 60),
-    ORANGE("Orange", 25);
+    ITEM_A("A", 50),
+    ITEM_B("B", 30),
+    ITEM_C("C", 20),
+    ITEM_D("D", 15);
 
 	private String itemName;
 	private Integer price;
