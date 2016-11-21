@@ -49,7 +49,7 @@ public class BasketPriceCalculator {
 	}
 
 	/**
-	 * 2 for one offer
+	 * 2 for 45 offer
 	 * @return price
 	 */
 	private Observable<Integer> getPromotionalItemBPrice() {
@@ -58,7 +58,7 @@ public class BasketPriceCalculator {
 	}
 
 	/**
-	 * 3 for one offer
+	 * 3 for 130 offer
 	 * @return price
 	 */
 	private Observable<Integer> getPromotionalItemAPrice() {
