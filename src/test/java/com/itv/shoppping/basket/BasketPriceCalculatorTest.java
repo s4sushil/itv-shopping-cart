@@ -76,4 +76,11 @@ public class BasketPriceCalculatorTest {
 		BasketPriceCalculator calc = new BasketPriceCalculator(basketOfOranges);
 		assertThat(BlockingObservable.from(calc.totalPromotionalPrice()).last(), is(270));
 	}
+	
+	@Test
+	public void testPromotionalPriceOfItemBAndItemA() {
+		List<String> basketOfOranges = Arrays.asList(ItemEnum.ITEM_B.name(), ItemEnum.ITEM_B.name(), ItemEnum.ITEM_A.name());
+		BasketPriceCalculator calc = new BasketPriceCalculator(basketOfOranges);
+		assertThat(BlockingObservable.from(calc.totalPromotionalPrice()).last(), is(95));
+	}
 }
